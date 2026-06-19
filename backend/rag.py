@@ -43,10 +43,10 @@ def semantic_search(
     top_k: int = 3
 ) -> list:
     result = client.models.embed_content(
-    model="text-embedding-004",
-    contents=query
-)
-query_embedding = np.array(result.embeddings[0].values)
+        model="text-embedding-004",
+        contents=query
+    )
+    query_embedding = np.array(result.embeddings[0].values)
     scores = cosine_similarity(query_embedding, chunk_embeddings)
     top_indices = np.argsort(scores)[-top_k:][::-1]
     return [(chunks[i], float(scores[i])) for i in top_indices]
