@@ -5,10 +5,7 @@ import { useRouter } from "next/navigation";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas-pro";
 
-const verdictConfig: Record
-  string,
-  { label: string; text: string; bg: string; border: string }
-> = {
+const verdictConfig: Record<string, { label: string; text: string; bg: string; border: string }> = {
   APPROVED: {
     label: "Approved",
     text: "text-verdict-green",
@@ -35,10 +32,7 @@ const verdictConfig: Record
   },
 };
 
-const riskLevelConfig: Record
-  string,
-  { text: string; bg: string; border: string }
-> = {
+const riskLevelConfig: Record<string, { text: string; bg: string; border: string }> = {
   Low: {
     text: "text-verdict-green",
     bg: "bg-verdict-green-bg",
@@ -395,7 +389,7 @@ export default function Results() {
           <SectionLabel>Sources ({result.sources_used.length})</SectionLabel>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {result.sources_used.map((src, i) => (
-              
+              <a
                 key={i}
                 href={src}
                 target="_blank"
